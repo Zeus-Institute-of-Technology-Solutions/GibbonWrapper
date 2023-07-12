@@ -93,12 +93,12 @@ jobs:
 
       - name: 📋 Compiling release
         run: |
-          yarn add expo
-          npm install -g expo
-          npm install -g sharp-cli
-          npm install -g expo-system-ui
-          npx expo install expo-modules-autolinking
-          eas build -p ios --local --non-interactive
+          #npm install -g expo
+          #npm install -g sharp-cli
+          #npm install -g expo-system-ui
+          #npx expo install expo-modules-autolinking
+          #eas build -p ios --local --non-interactive
+          fastlane beta
         env:
           GITHUB_TOKEN: ${{ github.token }}
 
