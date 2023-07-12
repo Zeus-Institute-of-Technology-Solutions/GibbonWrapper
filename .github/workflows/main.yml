@@ -44,6 +44,8 @@ jobs:
         run: eas build -p android --local
         env:
           GITHUB_TOKEN: ${{ github.token }}
+          token: ${{ secrets.EXPO_TOKEN }}
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
 
   Ios:
     if: ${{ github.ref == 'refs/heads/main' && github.event.inputs.Ios == 'true' }}
