@@ -93,6 +93,7 @@ jobs:
 
       - name: 📋 Compiling release
         run: |
+          yarn add expo
           npm install -g expo
           npm install -g sharp-cli
           npm install -g expo-system-ui
