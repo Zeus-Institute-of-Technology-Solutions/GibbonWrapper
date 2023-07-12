@@ -57,8 +57,8 @@ jobs:
         uses: xresloader/upload-to-github-release@v1
         with:
           file: |
-            app/build/outputs/*/*/*.apk
-            app/build/outputs/*/*/*.aab
+            build-1689148309960.apk
+
         #    ${{steps.sign_app.outputs.signedReleaseFile}}
           name: ${{ github.pull_request_target }} ${{ github.GITHUB_BASE_REF }} ${{ github.run_id }}
           tag_name: ${{ github.run_id }} ${{ github.pull_request_target }}
