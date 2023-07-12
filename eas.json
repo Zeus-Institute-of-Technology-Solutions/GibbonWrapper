@@ -17,6 +17,7 @@
             "developmentClient": true,
             "distribution": "internal",
             "gradleCommand": ":app:assembleRelease"
+        }
       },
       "production": {
         "android": {
@@ -24,8 +25,10 @@
             "developmentClient": true,
             "distribution": "internal",
             "gradleCommand": ":app:assembleRelease"
+        }
       }
-    },
+    }
+    ,
     "submit": {
       "production": {}
     }
