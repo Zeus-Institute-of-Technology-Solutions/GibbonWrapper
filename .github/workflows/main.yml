@@ -14,6 +14,9 @@ on:
       URL:
         default: google.com
         required: false
+      token:
+        description: Your Expo token, for authentication. (use with secrets)
+        required: true
 
 concurrency:
   group: GibbonWrapper
@@ -36,7 +39,7 @@ jobs:
         uses: expo/expo-github-action@v8
         with:
           eas-version: latest
-          token: ${{ secrets.EXPO_TOKEN }}
+          token: ${{ github.event.inputs.token }}
         env:
           token: ${{ secrets.EXPO_TOKEN }}
       #- name: 📦 Install dependencies
@@ -46,8 +49,6 @@ jobs:
         run: eas build -p android --local
         env:
           GITHUB_TOKEN: ${{ github.token }}
-          token: ${{ secrets.EXPO_TOKEN }}
-          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
 
   Ios:
     if: ${{ github.ref == 'refs/heads/main' && github.event.inputs.Ios == 'true' }}
