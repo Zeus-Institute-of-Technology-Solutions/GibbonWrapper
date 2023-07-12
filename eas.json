@@ -12,9 +12,19 @@
         } 
       },
       "preview": {
-        "distribution": "internal"
+        "android": {
+            "buildType": "apk",
+            "developmentClient": true,
+            "distribution": "internal",
+            "gradleCommand": ":app:assembleRelease"
       },
-      "production": {}
+      "production": {
+        "android": {
+            "buildType": "apk",
+            "developmentClient": true,
+            "distribution": "internal",
+            "gradleCommand": ":app:assembleRelease"
+      }
     },
     "submit": {
       "production": {}
