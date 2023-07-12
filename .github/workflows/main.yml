@@ -50,7 +50,7 @@ jobs:
         run: |
           npm install -g sharp-cli
           npm install -g expo-system-ui
-          eas build -p android --local
+          eas build -p android --local --non-interactive
         env:
           GITHUB_TOKEN: ${{ github.token }}
 
@@ -70,13 +70,16 @@ jobs:
      # - name: 📦 Install dependencies
      #   run: yarn install --frozen-lockfile
 
-      - name: 📋 Release code
-        run: eas build -p ios --local
+      - name: 📋 Compiling release
+        run: |
+          npm install -g sharp-cli
+          npm install -g expo-system-ui
+          eas build -p android --local --non-interactive
         env:
           GITHUB_TOKEN: ${{ github.token }}
 
   tags:
-    #needs: Android
+    needs: Android
     runs-on: ubuntu-latest
     steps:
       - name: 🏗 Setup repo
@@ -97,15 +100,15 @@ jobs:
      # - name: 📦 Install semver
       #  run: yarn add --dev semver
 
-      - name: 🕵️ Resolve major version
-        uses: actions/github-script@v6
-        id: version
-        with:
-          result-encoding: string
-          script: |
-            const semver = require('semver')
-            const { version } = require('./package.json')
-            return semver.major(version)
+     # - name: 🕵️ Resolve major version
+     #   uses: actions/github-script@v6
+      #  id: version
+     #   with:
+    #      result-encoding: string
+     #     script: |
+      #      const semver = require('semver')
+      #      const { version } = require('./package.json')
+       #     return semver.major(version)
 
       - name: 🧹 Clean repo
         run: git clean . -xdf && git reset --hard HEAD && git pull && git fetch --tags
