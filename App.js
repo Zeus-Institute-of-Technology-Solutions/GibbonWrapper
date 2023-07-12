@@ -11,14 +11,25 @@ export default function App() {
     webviewRef.current.goBack();
   }
 
+  // Define a function to go to the home page
+  function goHome() {
+    webviewRef.current.injectJavaScript('window.location.href = "https://www.google.com";');
+  }
+
   return (
     <View style={styles.container}>
       <WebView
         ref={webviewRef}
-        source={{ uri: 'https://www.google.com' }}
+        source={{ uri: 'google.com' }}
         style={styles.webview}
       />
-      <Button title="Back" onPress={goBack} />
+      {/* Add a view to contain the buttons */}
+      <View style={styles.buttons}>
+        {/* Add a home button with an onPress handler */}
+        <Button title="Home" onPress={goHome} />
+        {/* Move the back button to the right side */}
+        <Button title="Back" onPress={goBack} style={styles.back} />
+      </View>
     </View>
   );
 }
@@ -30,5 +41,15 @@ const styles = StyleSheet.create({
   },
   webview: {
     flex: 1,
+  },
+  // Add a style for the buttons view
+  buttons: {
+    flexDirection: 'row', // Use row layout
+    justifyContent: 'space-between', // Space the buttons evenly
+    margin: 10, // Add some margin
+  },
+  // Add a style for the back button
+  back: {
+    alignSelf: 'flex-end', // Align to the right
   },
 });
