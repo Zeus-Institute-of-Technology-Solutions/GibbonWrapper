@@ -1,22 +1,34 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-import * as React from 'react';
-import { WebView } from'react-native-webview';
+import React, { useRef } from 'react';
+import { StyleSheet, View, Button } from 'react-native';
+import { WebView } from 'react-native-webview';
+
 export default function App() {
- // render(); {
-    return (
+  // Create a reference to the webview
+  const webviewRef = useRef(null);
+
+  // Define a function to go back in the webview history
+  function goBack() {
+    webviewRef.current.goBack();
+  }
+
+  return (
+    <View style={styles.container}>
       <WebView
-      source={{ uri: 'google.com' }}
-      style={{ marginTop: 20 }}
+        ref={webviewRef}
+        source={{ uri: 'https://www.google.com' }}
+        style={styles.webview}
       />
-    );
-//}
+      <Button title="Back" onPress={goBack} />
+    </View>
+  );
 }
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+  },
+  webview: {
+    flex: 1,
   },
 });
