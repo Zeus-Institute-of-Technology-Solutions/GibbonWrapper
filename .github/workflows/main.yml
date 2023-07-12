@@ -25,7 +25,7 @@ concurrency:
 
 jobs:
   Android:
-    if: ${{ github.ref != 'refs/heads/main' || github.event.inputs.Android == 'true' }}
+    #if: ${{ github.ref != 'refs/heads/main' || github.event.inputs.Android == 'true' }}
     runs-on: ubuntu-latest
     steps:
       - name: 🏗 Setup repo
@@ -55,7 +55,7 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
 
   Ios:
-    if: ${{ github.ref == 'refs/heads/main' && github.event.inputs.Ios == 'true' }}
+    #if: ${{ github.ref == 'refs/heads/main' && github.event.inputs.Ios == 'true' }}
     runs-on: ubuntu-latest
     steps:
       - name: 🏗 Setup repo
@@ -76,7 +76,7 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
 
   tags:
-    needs: Android
+    #needs: Android
     runs-on: ubuntu-latest
     steps:
       - name: 🏗 Setup repo
