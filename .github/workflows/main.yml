@@ -50,8 +50,8 @@ jobs:
 
       - name: 📋 Compiling release
         run: |
-          npm install -g sharp-cli
-          npm install -g expo-system-ui
+          #npm install -g sharp-cli
+          #npm install -g expo-system-ui
           eas build -p android --local --non-interactive
         env:
           GITHUB_TOKEN: ${{ github.token }}
