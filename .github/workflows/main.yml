@@ -96,7 +96,7 @@ jobs:
           npm install -g expo
           npm install -g sharp-cli
           npm install -g expo-system-ui
-          npm install -g expo-modules-autolinking
+          npx expo install expo-modules-autolinking
           eas build -p ios --local --non-interactive
         env:
           GITHUB_TOKEN: ${{ github.token }}
