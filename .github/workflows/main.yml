@@ -12,7 +12,7 @@ on:
         default: true
         required: false
       URL:
-        default: google.com
+        default: wikipedia.org
         required: false
       token:
         description: Your Expo token, for authentication. (use with secrets)
