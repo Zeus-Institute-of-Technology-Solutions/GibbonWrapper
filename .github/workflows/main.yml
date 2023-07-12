@@ -53,7 +53,7 @@ jobs:
           eas build -p android --local --non-interactive
         env:
           GITHUB_TOKEN: ${{ github.token }}
-      - name: Upload to Release
+      - name: 📦 Upload to Release
         uses: xresloader/upload-to-github-release@v1
         with:
           file: |
