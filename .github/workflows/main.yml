@@ -6,10 +6,13 @@ on:
   workflow_dispatch:
     inputs:
       Android:
+        default: true
         required: false
       Ios:
+        default: true
         required: false
       URL:
+        default: google.com
         required: false
 
 concurrency:
