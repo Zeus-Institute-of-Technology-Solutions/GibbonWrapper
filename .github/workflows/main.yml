@@ -34,8 +34,8 @@ jobs:
         with:
           eas-version: latest
           token: ${{ secrets.EXPO_TOKEN }}
-      - name: 📦 Install dependencies
-        run: yarn install --frozen-lockfile
+      #- name: 📦 Install dependencies
+      #  run: yarn install --frozen-lockfile
 
       - name: 📋 Compiling release
         run: eas build -p android --local
@@ -55,8 +55,8 @@ jobs:
           node-version: 16.x
           cache: yarn
 
-      - name: 📦 Install dependencies
-        run: yarn install --frozen-lockfile
+     # - name: 📦 Install dependencies
+     #   run: yarn install --frozen-lockfile
 
       - name: 📋 Release code
         run: eas build -p ios --local
@@ -79,11 +79,11 @@ jobs:
       - name: 👷 Force repo to latest
         run: git fetch --all && git pull
 
-      - name: 📦 Install dependencies
-        run: yarn install --frozen-lockfile
+     # - name: 📦 Install dependencies
+     #   run: yarn install --frozen-lockfile
 
-      - name: 📦 Install semver
-        run: yarn add --dev semver
+     # - name: 📦 Install semver
+      #  run: yarn add --dev semver
 
       - name: 🕵️ Resolve major version
         uses: actions/github-script@v6
