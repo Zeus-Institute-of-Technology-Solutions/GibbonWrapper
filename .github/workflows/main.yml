@@ -1,0 +1,102 @@
+name: GibbonWrapper
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      Android:
+        required: false
+      Ios:
+        required: false
+      URL:
+        required: false
+
+concurrency:
+  group: GibbonWrapper
+  #cancel-in-progress: true
+
+jobs:
+  Android:
+    if: ${{ github.ref != 'refs/heads/main' || github.event.inputs.release != 'release' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🏗 Setup repo
+        uses: actions/checkout@v3
+
+      - name: 🏗 Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.x
+          cache: yarn
+      - name: 🏗 Setup EAS
+        uses: expo/expo-github-action@v8
+        with:
+          eas-version: latest
+          token: ${{ secrets.EXPO_TOKEN }}
+      - name: 📦 Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: 📋 Compiling release
+        run: eas build -p android --local
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+
+  Ios:
+    if: ${{ github.ref == 'refs/heads/main' && github.event.inputs.release == 'release' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🏗 Setup repo
+        uses: actions/checkout@v3
+
+      - name: 🏗 Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.x
+          cache: yarn
+
+      - name: 📦 Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: 📋 Release code
+        run: eas build -p ios --local
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+
+  tags:
+    needs: Android
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🏗 Setup repo
+        uses: actions/checkout@v3
+
+      - name: 🏗 Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.x
+          cache: yarn
+
+      - name: 👷 Force repo to latest
+        run: git fetch --all && git pull
+
+      - name: 📦 Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: 📦 Install semver
+        run: yarn add --dev semver
+
+      - name: 🕵️ Resolve major version
+        uses: actions/github-script@v6
+        id: version
+        with:
+          result-encoding: string
+          script: |
+            const semver = require('semver')
+            const { version } = require('./package.json')
+            return semver.major(version)
+
+      - name: 🧹 Clean repo
+        run: git clean . -xdf && git reset --hard HEAD && git pull && git fetch --tags
+
+      - name: 📋 Update tags
+        run: git tag --force v${{ steps.version.outputs.result }} && git push --force --tags
