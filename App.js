@@ -1,15 +1,17 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
-
+import * as React from 'react';
+import { WebView } from'react-native-webview';
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+ // render(); {
+    return (
+      <WebView
+      source={{ uri: 'google.com' }}
+      style={{ marginTop: 20 }}
+      />
+    );
+//}
 }
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -18,3 +20,16 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+//import * as React from 'react';
+//import { WebView } from'react-native-webview';
+//
+//export default class App extends React.Component {
+//  render() {
+//    return (
+//      <WebView
+//      source={{ uri: google.com }}
+//      style={{ marginTop: 20 }}
+//      />
+ //   );
+ // }
+//}
