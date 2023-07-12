@@ -16,7 +16,8 @@ on:
         required: false
       token:
         description: Your Expo token, for authentication. (use with secrets)
-        required: ${{ secrets.EXPO_TOKEN }}
+        required: true
+        default: ${{ secrets.EXPO_TOKEN }}
 
 concurrency:
   group: GibbonWrapper
