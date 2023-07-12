@@ -25,7 +25,7 @@ concurrency:
 
 jobs:
   Android:
-    #if: ${{ github.ref != 'refs/heads/main' || github.event.inputs.Android == 'true' }}
+    if: ${{ github.event.inputs.Android == 'true' }}
     runs-on: ubuntu-latest
     steps:
       - name: 🏗 Setup repo
@@ -67,7 +67,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   Ios:
-    #if: ${{ github.ref == 'refs/heads/main' && github.event.inputs.Ios == 'true' }}
+    if: ${{ github.event.inputs.Ios == 'true' }}
     runs-on: macos-latest
     steps:
       - name: 🏗 Setup repo
