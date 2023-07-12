@@ -47,7 +47,10 @@ jobs:
       #  run: yarn install --frozen-lockfile
 
       - name: 📋 Compiling release
-        run: eas build -p android --local
+        run: |
+          npm install -g sharp-cli
+          npm install -g expo-system-ui
+          eas build -p android --local
         env:
           GITHUB_TOKEN: ${{ github.token }}
 
