@@ -1,0 +1,10 @@
+git_url("https://github.com/Zeus-Institute-of-Technology-Solutions/GibbonWrapper")
+storage_mode("git")
+
+type("appstore") # The default type, can be: appstore, adhoc, enterprise or development
+app_identifier(["bundleid"])
+username("souhrud@live.com") # Your Apple Developer Portal username
+
+type("development") # The default type, can be: appstore, adhoc, enterprise or development
+app_identifier(["bundleid"])
+username("souhrud@live.com") # Your Apple Developer Portal username
