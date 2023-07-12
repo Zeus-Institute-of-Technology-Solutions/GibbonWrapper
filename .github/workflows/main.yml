@@ -53,6 +53,18 @@ jobs:
           eas build -p android --local --non-interactive
         env:
           GITHUB_TOKEN: ${{ github.token }}
+      - name: Upload to Release
+        uses: xresloader/upload-to-github-release@v1
+        with:
+          file: |
+            app/build/outputs/*/*/*.apk
+            app/build/outputs/*/*/*.aab
+        #    ${{steps.sign_app.outputs.signedReleaseFile}}
+          name: ${{ github.pull_request_target }} ${{ github.GITHUB_BASE_REF }} ${{ github.run_id }}
+          tag_name: ${{ github.run_id }} ${{ github.pull_request_target }}
+          draft: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   Ios:
     #if: ${{ github.ref == 'refs/heads/main' && github.event.inputs.Ios == 'true' }}
