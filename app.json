@@ -21,10 +21,17 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.ZeusInstitute.GibbonWrapper"
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "dcb17889-8d06-48b8-b365-4151b0026247"
+      }
+    },
+    "owner": "souhrud"
   }
 }
