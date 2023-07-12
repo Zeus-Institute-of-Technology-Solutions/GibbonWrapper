@@ -56,7 +56,7 @@ jobs:
 
   Ios:
     #if: ${{ github.ref == 'refs/heads/main' && github.event.inputs.Ios == 'true' }}
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
       - name: 🏗 Setup repo
         uses: actions/checkout@v3
@@ -81,7 +81,7 @@ jobs:
         run: |
           npm install -g sharp-cli
           npm install -g expo-system-ui
-          eas build -p android --local --non-interactive
+          eas build -p ios --local --non-interactive
         env:
           GITHUB_TOKEN: ${{ github.token }}
 
