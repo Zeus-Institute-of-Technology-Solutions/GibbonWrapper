@@ -53,13 +53,14 @@ jobs:
           #npm install -g sharp-cli
           #npm install -g expo-system-ui
           eas build -p android --local --non-interactive
+          cp build-*.apk build.apk
         env:
           GITHUB_TOKEN: ${{ github.token }}
       - name: 📦 Upload to Release
         uses: xresloader/upload-to-github-release@v1
         with:
           file: |
-            build-*.apk
+            build.apk
 
         #    ${{steps.sign_app.outputs.signedReleaseFile}}
           name: ${{ github.pull_request_target }} ${{ github.GITHUB_BASE_REF }} ${{ github.run_id }}
