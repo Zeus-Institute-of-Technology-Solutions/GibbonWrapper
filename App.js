@@ -13,7 +13,7 @@ export default function App() {
 
   // Define a function to go to the home page
   function goHome() {
-    webviewRef.current.injectJavaScript('window.location.href = "https://www.google.com";');
+    webviewRef.current.injectJavaScript('window.location.href = "google.com";');
   }
 
   return (
