@@ -52,6 +52,7 @@ jobs:
         run: |
           #npm install -g sharp-cli
           #npm install -g expo-system-ui
+          yarn add expo
           npm i @expo/config-plugins
           eas build -p android --local --non-interactive
           cp build-*.apk build.apk
