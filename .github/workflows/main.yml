@@ -52,6 +52,7 @@ jobs:
         run: |
           #npm install -g sharp-cli
           #npm install -g expo-system-ui
+          npm i @expo/config-plugins
           eas build -p android --local --non-interactive
           cp build-*.apk build.apk
         env:
@@ -97,6 +98,7 @@ jobs:
           #npm install -g expo
           #npm install -g sharp-cli
           #npm install -g expo-system-ui
+          npm i @expo/config-plugins
           #npx expo install expo-modules-autolinking
           #eas build -p ios --local --non-interactive
           fastlane ios beta
