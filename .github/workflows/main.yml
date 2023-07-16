@@ -9,7 +9,7 @@ on:
         default: true
         required: false
       Ios:
-        default: true
+        default: false
         required: false
       URL:
         description: Not quite working
