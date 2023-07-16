@@ -11,10 +11,10 @@ on:
       Ios:
         default: false
         required: false
-      URL:
-        description: Not quite working
-        default: mysoreskills.com
-        required: false
+      #URL:
+      #  description: Not quite working
+      #  default: mysoreskills.com
+      ##  required: false
       token:
         description: Your Expo token, for authentication. (use with secrets)
         required: true
