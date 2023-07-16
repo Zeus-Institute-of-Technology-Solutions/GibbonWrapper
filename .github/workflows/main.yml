@@ -44,7 +44,7 @@ jobs:
         env:
           token: ${{ secrets.EXPO_TOKEN }}
       - name: 🏗 Change URL 
-        run: sed -i 's/google.com/${{ github.event.inputs.URL }}/g' App.js
+        run: sed -i 's/mysoreskills.com/${{ github.event.inputs.URL }}/g' App.js
       - name: 📦 Install dependencies
         run: yarn install 
 

@@ -13,14 +13,14 @@ export default function App() {
 
   // Define a function to go to the home page
   function goHome() {
-    webviewRef.current.injectJavaScript('window.location.href = "google.com";');
+    webviewRef.current.injectJavaScript('window.location.href = "mysoreskills.com";');
   }
 
   return (
     <View style={styles.container}>
       <WebView
         ref={webviewRef}
-        source={{ uri: 'google.com' }}
+        source={{ uri: 'mysoreskills.com' }}
         style={styles.webview}
       />
       {/* Add a view to contain the buttons */}
